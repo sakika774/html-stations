@@ -11,6 +11,19 @@ async function getData() {
 }
 
 function test() {
-  return
-}
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const userList = [
+        { id: 1, first_name: '優', family_name: '大木', affiliation: 'TechTrain', is_student: false },
+        { id: 2, first_name: '太郎', family_name: '山田', affiliation: 'HogeHoge大学', is_student: true }
+      ];
 
+      // main.js が使いやすい形で返す
+      const fullNames = userList.map(u => ({
+        full_name: `${u.family_name} ${u.first_name}`
+      }));
+
+      resolve(fullNames);
+    }, 3000);
+  });
+}
